@@ -10,7 +10,6 @@ RUN bash build.sh release docker
 FROM alpine:edge
 
 ARG INSTALL_FFMPEG=false
-ARG INSTALL_ARIA2=false
 LABEL MAINTAINER="i@nn.ci"
 
 WORKDIR /opt/alist/
@@ -27,7 +26,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /opt/alist/alist && \
     chmod +x /entrypoint.sh && /entrypoint.sh version
 
-ENV PUID=0 PGID=0 UMASK=022 RUN_ARIA2=${INSTALL_ARIA2}
+ENV PUID=0 PGID=0 UMASK=022
 VOLUME /opt/alist/data/
 EXPOSE 5244 5245
 CMD [ "/entrypoint.sh" ]
