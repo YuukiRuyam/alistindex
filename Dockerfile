@@ -27,6 +27,9 @@ RUN chmod +x /opt/alist/alist && \
     chmod +x /entrypoint.sh && /entrypoint.sh version
 
 ENV PUID=0 PGID=0 UMASK=022
-VOLUME /opt/alist/data/
+
+# Remove the VOLUME line since Railway handles persistent storage
+# VOLUME /opt/alist/data/
+
 EXPOSE 5244 5245
 CMD [ "/entrypoint.sh" ]
